@@ -15,7 +15,7 @@ export class AuthService {
     );
   }
 
-  async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+  async getProfile(email: string) {
+    return this.userModel.find({ email });
   }
 }
