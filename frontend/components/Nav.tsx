@@ -4,13 +4,12 @@ import Image from "next/image";
 
 export default function Nav() {
     return (
-        <nav className="p-1 flex justify-between items-center border-b">
-            <Link href="/">
+        <nav className="p-4 flex justify-between items-center border-b">
+            <Link className="flex items-center space-x-4" href="/">
                 <Image src="/icon-512x512.png" alt="logo" width={64} height={64} priority />
+                <span className="text-4xl">Promptopia</span>
             </Link>
-            <div className="flex items-center space-x-1">
-                <AuthButton />
-            </div>
+            <AuthButton />
         </nav>
     )
 }
