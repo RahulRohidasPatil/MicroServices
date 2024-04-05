@@ -11,15 +11,20 @@ const handler = NextAuth({
   ],
   callbacks: {
     async signIn({ user }) {
-      const accessToken = await fetch(`${process.env.BACKEND_URL}/auth/signIn`, {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name: user.name, email: user.email, image: user.image })
-      }).then(response => response.text())
-      cookies().set('accessToken', accessToken)
-      return true
+      try {
+        const accessToken = await fetch(`${process.env.BACKEND_URL}/auth/signIn`, {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name: user.name, email: user.email, image: user.image })
+        }).then(response => response.text())
+        cookies().set('accessToken', accessToken)
+        return true
+      } catch (error) {
+        console.log(`signIn callback: ${(error as Error).message}`)
+        return false
+      }
     }
   }
 })
