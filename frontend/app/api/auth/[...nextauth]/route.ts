@@ -19,12 +19,18 @@ const handler = NextAuth({
           },
           body: JSON.stringify({ name: user.name, email: user.email, image: user.image })
         }).then(response => response.text())
+        
         cookies().set('accessToken', accessToken)
         return true
       } catch (error) {
         console.log(`signIn callback: ${(error as Error).message}`)
         return false
       }
+    }
+  },
+  events: {
+    signOut() {
+      cookies().delete('accessToken')
     }
   }
 })
