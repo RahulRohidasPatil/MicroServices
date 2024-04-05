@@ -18,7 +18,7 @@ const handler = NextAuth({
         },
         body: JSON.stringify({ name: user.name, email: user.email, image: user.image })
       }).then(response => response.text())
-      cookies().set('next-auth.access-token', accessToken)
+      cookies().set('accessToken', accessToken)
       return true
     }
   }
