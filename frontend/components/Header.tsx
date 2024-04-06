@@ -8,7 +8,7 @@ export default function Nav() {
         <header className="flex sticky top-0 justify-between p-4 bg-black border-b">
             <Link className="flex items-center space-x-4" href="/">
                 <Image src="/icon-512x512.png" alt="logo" width={32} height={32} priority />
-                <h1>Promptopia</h1>
+                <h1 className="text-2xl">Promptopia</h1>
             </Link>
             <div className="flex relative items-center space-x-4">
                 <SunIcon />
