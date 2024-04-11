@@ -21,7 +21,7 @@ export default function AuthButton() {
             priority
         />
         {showDropdown && (
-            <div className="absolute top-12 right-0 p-2 text-end bg-black border w-max">
+            <div className="absolute top-12 right-0 p-2 text-end w-max border">
                 <div className="flex space-x-1">
                     <strong>Name:</strong>
                     <span>{session.user?.name}</span>
@@ -30,7 +30,7 @@ export default function AuthButton() {
                     <strong>Email:</strong>
                     <span>{session.user?.email}</span>
                 </div>
-                <button className="p-1 mt-2 hover:text-black hover:bg-white border" onClick={() => signOut()}>Sign Out</button>
+                <button className="p-1 mt-2 border" onClick={() => signOut()}>Sign Out</button>
             </div>
         )}
     </> : (
