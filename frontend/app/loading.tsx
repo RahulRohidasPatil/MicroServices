@@ -1,8 +1,8 @@
 import Spinner from "@/components/Spinner";
 
-export default function Loading() {
+export default async function Loading() {
     return (
-        <div className="flex justify-center items-center p-16">
+        <div className="flex justify-center pt-4">
             <Spinner />
         </div>
     )

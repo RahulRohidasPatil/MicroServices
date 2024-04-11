@@ -3,7 +3,6 @@
 import { signIn, signOut, useSession } from "next-auth/react"
 import Image from "next/image"
 import { useState } from "react"
-import Dropdown from "./Dropdown"
 import Spinner from "./Spinner"
 
 export default function AuthButton() {
@@ -19,11 +18,20 @@ export default function AuthButton() {
             width={32}
             height={32}
             onClick={() => setShowDropdown(!showDropdown)}
+            priority
         />
         {showDropdown && (
-            <Dropdown name={session.user?.name as string} email={session.user?.email as string}>
+            <div className="absolute top-12 right-0 p-2 text-end bg-black border w-max">
+                <div className="flex space-x-1">
+                    <strong>Name:</strong>
+                    <span>{session.user?.name}</span>
+                </div>
+                <div className="flex space-x-1">
+                    <strong>Email:</strong>
+                    <span>{session.user?.email}</span>
+                </div>
                 <button className="p-1 mt-2 hover:text-black hover:bg-white border" onClick={() => signOut()}>Sign Out</button>
-            </Dropdown>
+            </div>
         )}
     </> : (
         <button type="button" onClick={() => signIn('github')}>Sign in</button>
