@@ -11,34 +11,34 @@ export default function ThemeButton() {
 
     return <>
         {theme === 'system' ? <>
-            <MoonIconOutline className="h-6 w-6 cursor-pointer hidden dark:block" onClick={() => setShowDropdown(!showDropdown)} />
-            <SunIconOutline className="h-6 w-6 cursor-pointer dark:hidden" onClick={() => setShowDropdown(!showDropdown)} />
+            <MoonIconOutline className="hidden dark:block w-6 h-6 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)} />
+            <SunIconOutline className="dark:hidden w-6 h-6 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)} />
         </> : <>
-            <MoonIconSolid className="h-6 w-6 cursor-pointer hidden dark:block" onClick={() => setShowDropdown(!showDropdown)} />
-            <SunIconSolid className="h-6 w-6 cursor-pointer dark:hidden" onClick={() => setShowDropdown(!showDropdown)} />
+            <MoonIconSolid className="hidden dark:block w-6 h-6 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)} />
+            <SunIconSolid className="dark:hidden w-6 h-6 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)} />
         </>}
         {showDropdown && (
-            <div className="absolute top-12 right-0 border flex p-2 space-x-2 z-10">
+            <div className="flex absolute top-12 right-0 z-10 p-2 space-x-2 border">
                 {theme === 'system' ? <>
-                    <ComputerDesktopIconSolid className="h-6 w-6" title="System Theme" />
+                    <ComputerDesktopIconSolid className="w-6 h-6" title="System Theme" />
                 </> : <>
-                    <ComputerDesktopIconOutline className="h-6 w-6 cursor-pointer" title="System Theme" onClick={() => {
+                    <ComputerDesktopIconOutline className="w-6 h-6 cursor-pointer" title="System Theme" onClick={() => {
                         localStorage.removeItem('theme')
                         dispatch('setSystemTheme')
                     }} />
                 </>}
                 {theme === 'dark' ? <>
-                    <MoonIconSolid className="h-6 w-6" title="Dark Theme" />
+                    <MoonIconSolid className="w-6 h-6" title="Dark Theme" />
                 </> : <>
-                    <MoonIconOutline className="h-6 w-6 cursor-pointer" onClick={() => {
+                    <MoonIconOutline className="w-6 h-6 cursor-pointer" onClick={() => {
                         localStorage.theme = 'dark'
                         dispatch("setDarkTheme")
                     }} title="Dark Theme" />
                 </>}
                 {theme === 'light' ? <>
-                    <SunIconSolid className="h-6 w-6" title="Light Theme" />
+                    <SunIconSolid className="w-6 h-6" title="Light Theme" />
                 </> : <>
-                    <SunIconOutline className="h-6 w-6 cursor-pointer" onClick={() => {
+                    <SunIconOutline className="w-6 h-6 cursor-pointer" onClick={() => {
                         localStorage.theme = 'light'
                         dispatch('setLightTheme')
                     }} title="Light Theme" />

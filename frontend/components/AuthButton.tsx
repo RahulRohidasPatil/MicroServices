@@ -21,7 +21,7 @@ export default function AuthButton() {
             priority
         />
         {showDropdown && (
-            <div className="absolute top-12 right-0 p-2 text-end w-max border">
+            <div className="absolute top-12 right-0 p-2 w-max text-end border">
                 <div className="flex space-x-1">
                     <strong>Name:</strong>
                     <span>{session.user?.name}</span>
