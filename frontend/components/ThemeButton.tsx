@@ -23,6 +23,7 @@ export default function ThemeButton() {
                     <ComputerDesktopIconSolid className="w-6 h-6" title="System Theme" />
                 </> : <>
                     <ComputerDesktopIconOutline className="w-6 h-6 cursor-pointer" title="System Theme" onClick={() => {
+                        setShowDropdown(false)
                         localStorage.removeItem('theme')
                         dispatch('setSystemTheme')
                     }} />
@@ -31,6 +32,7 @@ export default function ThemeButton() {
                     <MoonIconSolid className="w-6 h-6" title="Dark Theme" />
                 </> : <>
                     <MoonIconOutline className="w-6 h-6 cursor-pointer" onClick={() => {
+                        setShowDropdown(false)
                         localStorage.theme = 'dark'
                         dispatch("setDarkTheme")
                     }} title="Dark Theme" />
@@ -39,6 +41,7 @@ export default function ThemeButton() {
                     <SunIconSolid className="w-6 h-6" title="Light Theme" />
                 </> : <>
                     <SunIconOutline className="w-6 h-6 cursor-pointer" onClick={() => {
+                        setShowDropdown(false)
                         localStorage.theme = 'light'
                         dispatch('setLightTheme')
                     }} title="Light Theme" />
