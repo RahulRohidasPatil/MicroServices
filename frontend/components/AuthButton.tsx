@@ -13,7 +13,7 @@ export default function AuthButton() {
     else return session ? <>
         <Image
             className="rounded-full cursor-pointer"
-            src={session.user?.image as string}
+            src={session.user?.image!}
             alt="Profile Image"
             width={32}
             height={32}
