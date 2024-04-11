@@ -30,7 +30,7 @@ export default function AuthButton() {
                     <strong>Email:</strong>
                     <span>{session.user?.email}</span>
                 </div>
-                <button className="p-1 mt-2 border" onClick={() => signOut()}>Sign Out</button>
+                <button className="p-1 mt-2 border" onClick={() => signOut({ redirect: false })}>Sign Out</button>
             </div>
         )}
     </> : (
