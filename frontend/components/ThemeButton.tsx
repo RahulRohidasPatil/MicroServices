@@ -18,7 +18,7 @@ export default function ThemeButton() {
             <SunIconSolid className="dark:hidden w-6 h-6 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)} />
         </>}
         {showDropdown && (
-            <div className="flex absolute top-12 right-0 z-10 p-2 space-x-2 border">
+            <div className="flex fixed top-16 right-4 z-10 p-2 space-x-2 border">
                 {theme === 'system' ? <>
                     <ComputerDesktopIconSolid className="w-6 h-6" title="System Theme" />
                 </> : <>

@@ -17,11 +17,11 @@ export default async function Header() {
             {session && (
                 <button>Create Post</button>
             )}
-            <div className="flex relative items-center space-x-4">
+            <div className="flex items-center space-x-4">
                 <ThemeButton />
                 {session ? (
                     <AuthButton image={session.user?.image}>
-                        <div className="absolute top-12 right-0 p-2 w-max text-end border">
+                        <div className="fixed top-16 right-4 p-2 w-max text-end border">
                             <div className="flex space-x-1">
                                 <strong>Name:</strong>
                                 <span>{session.user?.name}</span>
