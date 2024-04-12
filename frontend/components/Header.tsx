@@ -16,7 +16,7 @@ export default async function Header() {
                 <h1 className="text-2xl">Promptopia</h1>
             </Link>
             {session && (
-                <nav>
+                <nav className="flex items-center">
                     <Dialog trigger="Create Post">
                         <form className="flex flex-col items-end space-y-2" method="dialog">
                             <textarea className="p-1 max-w-[67vw] max-h-[67vh] border focus:outline-0 resize" placeholder="What's on your mind?" />
