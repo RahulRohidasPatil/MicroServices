@@ -1,10 +1,11 @@
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
-import AuthButton from "./AuthButton";
+import AuthDropdown from "./AuthDropdown";
+import CreatePost from "./CreatePost";
 import SignInButton from "./SignInButton";
 import SignOutButton from "./SignOutButton";
-import ThemeButton from "./ThemeButton";
+import ThemeDropdown from "./ThemeDropdown";
 
 export default async function Header() {
     const session = await getServerSession()
@@ -15,12 +16,12 @@ export default async function Header() {
                 <h1 className="text-2xl">Promptopia</h1>
             </Link>
             {session && (
-                <button>Create Post</button>
+                <CreatePost />
             )}
             <div className="flex items-center space-x-4">
-                <ThemeButton />
+                <ThemeDropdown />
                 {session ? (
-                    <AuthButton image={session.user?.image}>
+                    <AuthDropdown image={session.user?.image}>
                         <div className="fixed top-16 right-4 p-2 w-max text-end border">
                             <div className="flex space-x-1">
                                 <strong>Name:</strong>
@@ -32,7 +33,7 @@ export default async function Header() {
                             </div>
                             <SignOutButton />
                         </div>
-                    </AuthButton>
+                    </AuthDropdown>
                 ) : (
                     <SignInButton />
                 )}

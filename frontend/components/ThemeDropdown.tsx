@@ -5,7 +5,7 @@ import { ComputerDesktopIcon as ComputerDesktopIconSolid, MoonIcon as MoonIconSo
 import { useState } from "react"
 import { useTheme } from "./ThemeProvider"
 
-export default function ThemeButton() {
+export default function ThemeDropdown() {
     const [theme, dispatch] = useTheme()
     const [showDropdown, setShowDropdown] = useState(false)
 

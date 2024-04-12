@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useState } from "react"
 
-export default function AuthButton({ image, children }: Readonly<{ image?: string | null, children: React.ReactNode }>) {
+export default function AuthDropdown({ image, children }: Readonly<{ image?: string | null, children: React.ReactNode }>) {
     const [showDropdown, setShowDropdown] = useState(false)
 
     return <>
