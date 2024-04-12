@@ -14,6 +14,9 @@ export default async function Header() {
                 <Image src="/icon-32x32.png" alt="logo" width={32} height={32} priority />
                 <h1 className="text-2xl">Promptopia</h1>
             </Link>
+            {session && (
+                <button>Create Post</button>
+            )}
             <div className="flex relative items-center space-x-4">
                 <ThemeButton />
                 {session ? (
