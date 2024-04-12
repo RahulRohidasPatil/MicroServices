@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import AuthDropdown from "./AuthDropdown";
-import CreatePost from "./CreatePost";
+import Dialog from "./Dialog";
 import SignInButton from "./SignInButton";
 import SignOutButton from "./SignOutButton";
 import ThemeDropdown from "./ThemeDropdown";
@@ -16,7 +16,14 @@ export default async function Header() {
                 <h1 className="text-2xl">Promptopia</h1>
             </Link>
             {session && (
-                <CreatePost />
+                <nav>
+                    <Dialog trigger="Create Post">
+                        <form className="flex flex-col items-end space-y-2" method="dialog">
+                            <textarea className="p-1 max-w-[67vw] max-h-[67vh] border focus:outline-0 resize" placeholder="What's on your mind?" />
+                            <button className="p-1 border">OK</button>
+                        </form>
+                    </Dialog>
+                </nav>
             )}
             <div className="flex items-center space-x-4">
                 <ThemeDropdown />
