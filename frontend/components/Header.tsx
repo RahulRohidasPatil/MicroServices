@@ -6,9 +6,24 @@ import Dialog from "./Dialog";
 import SignInButton from "./SignInButton";
 import SignOutButton from "./SignOutButton";
 import ThemeDropdown from "./ThemeDropdown";
+import { cookies } from "next/headers";
 
 export default async function Header() {
     const session = await getServerSession()
+
+    async function createPrompt(formData: FormData) {
+        "use server"
+        const prompt = await fetch(`${process.env.BACKEND_URL}/prompt/create`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${cookies().get('accessToken')?.value}`,
+            },
+            body: JSON.stringify({ prompt: formData.get('prompt'), })
+        }).then(response => response.json())
+        console.log(22, prompt)
+    }
+
     return (
         <header className="flex sticky top-0 justify-between p-4">
             <Link className="flex items-center space-x-2" href="/">
@@ -17,10 +32,9 @@ export default async function Header() {
             </Link>
             {session && (
                 <nav className="flex items-center">
-                    <Dialog trigger="Create Post">
-                        <form className="flex flex-col items-end space-y-2" method="dialog">
-                            <textarea className="p-1 max-w-[67vw] max-h-[67vh] border focus:outline-0 resize" placeholder="What's on your mind?" />
-                            <button className="p-1 border">OK</button>
+                    <Dialog triggerButtonText="Create Post" formId="createPrompt" submitButtonText="Create">
+                        <form className="flex flex-col items-end space-y-2" action={createPrompt} id="createPrompt">
+                            <textarea className="p-1 max-w-[67vw] max-h-[67vh] border focus:outline-0 resize" name="prompt" placeholder="What's on your mind?" />
                         </form>
                     </Dialog>
                 </nav>

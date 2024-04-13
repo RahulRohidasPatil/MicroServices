@@ -15,7 +15,7 @@ export class AuthService {
     );
   }
 
-  async getProfile(email: string) {
-    return this.userModel.find({ email });
+  async getProfile(id: string) {
+    return this.userModel.findById(id);
   }
 }

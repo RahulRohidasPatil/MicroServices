@@ -1,16 +1,30 @@
 "use client"
 
-import { useRef } from "react"
+import { ReactNode, useRef } from "react"
 
-export default function Dialog({ trigger, children }: Readonly<{ trigger: string, children: React.ReactNode }>) {
+type DialogProps = {
+    triggerButtonText: string,
+    formId?: string,
+    submitButtonText?: string,
+    children: React.ReactNode
+}
+
+export default function Dialog({ triggerButtonText, formId, submitButtonText, children }: Readonly<DialogProps>) {
     const dialogRef = useRef<HTMLDialogElement>(null)
 
     return <div>
-        <button onClick={() => dialogRef.current?.showModal()}>
-            {trigger}
+        <button className="focus:outline-none" onClick={() => dialogRef.current?.showModal()}>
+            {triggerButtonText}
         </button>
-        <dialog className="p-2 backdrop:bg-black/50 border" ref={dialogRef}>
+        <dialog className="p-2 space-y-2 backdrop:bg-black/50 border" ref={dialogRef}>
             {children}
+            {formId && (
+                <div className="text-end">
+                    <button className="p-1 border" form={formId} onClick={() => dialogRef.current?.close()}>
+                        {submitButtonText}
+                    </button>
+                </div>
+            )}
         </dialog>
     </div>
 }
