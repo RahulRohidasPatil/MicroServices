@@ -20,6 +20,9 @@ export default function Dialog({ triggerButtonText, formId, submitButtonText, ch
             {children}
             {formId && (
                 <div className="text-end">
+                    <button className="p-1 mr-2 border" onClick={() => dialogRef.current?.close()}>
+                        Cancel
+                    </button>
                     <button className="p-1 border" form={formId} onClick={() => dialogRef.current?.close()}>
                         {submitButtonText}
                     </button>
