@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { SignInDto } from './dto/signIn.dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -18,9 +19,10 @@ export class AuthController {
     return this.jwtService.sign({ sub: user.id, email: user.email });
   }
 
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Get('profile')
   getProfile(@Req() request: Request) {
-    return this.authService.getProfile(request['user'].email);
+    return this.authService.getProfile(request['user'].sub);
   }
 }
